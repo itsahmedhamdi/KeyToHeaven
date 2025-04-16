@@ -1,0 +1,119 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.SignUpPage"
+             BackgroundColor="#00A9A5">
+
+    <ScrollView>
+        <!-- Added ScrollView here -->
+        <Grid RowDefinitions="Auto,*">
+            <Border Grid.Row="1"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 30"
+                    Margin="0,50,0,0"
+                    Padding="20"
+                    TranslationX="0"
+                    TranslationY="20"
+                    WidthRequest="420">
+
+                <VerticalStackLayout x:Name="MainLayout" Spacing="15">
+
+                    <!-- User Type Selection -->
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <Label Text="Are you :" FontSize="16" TextColor="#183D3D"/>
+
+                        <RadioButton x:Name="donatorRadio"
+                                     Content="Donator"
+                                     CheckedChanged="OnUserTypeChanged"
+                                     BackgroundColor="Transparent"
+                                     TextColor="#183D3D"/>
+
+                        <RadioButton x:Name="charityRadio"
+                                     Content="Charity"
+                                     CheckedChanged="OnUserTypeChanged"
+                                     BackgroundColor="Transparent"
+                                     TextColor="#183D3D"/>
+
+                    </HorizontalStackLayout>
+
+                    <!-- Input Fields -->
+                    <ScrollView>
+                        <!-- Ensuring internal scrolling as well -->
+                        <VerticalStackLayout Spacing="15">
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="firstNameEntry" Placeholder="First Name" TextColor="Black"/>
+                            </Border>
+
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="lastNameEntry" Placeholder="Last Name" TextColor="Black"/>
+                            </Border>
+
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" TextColor="Black"/>
+                            </Border>
+
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="phoneEntry" Placeholder="Phone Number" Keyboard="Telephone" TextColor="Black"/>
+                            </Border>
+
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" TextColor="Black"/>
+                            </Border>
+
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="#F7F7F7" Padding="5" StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="confirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" TextColor="Black"/>
+                            </Border>
+
+                            <!-- ID Ministry (Visible for Charity) -->
+                            <Border x:Name="idMinistryContainer"
+                                    Opacity="0"
+                                    IsVisible="False"
+                                    StrokeThickness="1"
+                                    Stroke="#E0E0E0"
+                                    BackgroundColor="#F7F7F7"
+                                    Padding="5"
+                                    StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="idMinistryEntry" Placeholder="ID Ministry" TextColor="Black"/>
+                            </Border>
+
+                            <!-- Description (Visible for Charity) -->
+                            <Border x:Name="descriptionContainer"
+                                    Opacity="0"
+                                    IsVisible="False"
+                                    StrokeThickness="1"
+                                    Stroke="#E0E0E0"
+                                    BackgroundColor="#F7F7F7"
+                                    Padding="5"
+                                    StrokeShape="RoundRectangle 10">
+                                <Entry x:Name="descriptionEntry" Placeholder="Description" TextColor="Black"/>
+                            </Border>
+                        </VerticalStackLayout>
+                    </ScrollView>
+
+                    <!-- Sign Up Button -->
+                    <Button Text="Sign Up"
+                            BackgroundColor="#00A9A5"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            Clicked="OnSignUpClicked"/>
+
+                    <!-- Log In Option -->
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="You already have an account?" TextColor="#5C8374"/>
+                        <Label x:Name="LoginLabel"
+                               Text=" Log In" 
+                               TextColor="#00A9A5" 
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLoginTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+    <!-- Closing ScrollView -->
+</ContentPage>

@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.ReportPage">
+
+    <ScrollView BackgroundColor="White">
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header -->
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="backicon.png" HeightRequest="20" WidthRequest="20" Scale="0.6"
+                             Clicked="OnBackButtonClicked"/>
+                <Label Text="Report a Problem" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Form Card -->
+            <Border BackgroundColor="#F9F9F9" StrokeShape="RoundRectangle 15" Padding="20" >
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="Tell us what went wrong:" FontSize="16" />
+                    <Editor x:Name="ReportEditor"
+                            Placeholder="Describe the issue in detail..."
+                            HeightRequest="150"
+                            BackgroundColor="White"
+                            AutoSize="TextChanges"
+                            Margin="0"
+                           
+                            />
+
+                    <Button Text="Submit Report"
+                            BackgroundColor="#2196F3"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnSubmitReportClicked"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

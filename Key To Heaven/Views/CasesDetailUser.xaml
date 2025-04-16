@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.CasesDetailUser"
+             BackgroundColor="#E3F5F5">
+
+    <Grid Padding="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Header -->
+            <RowDefinition Height="*" />
+            <!-- Content -->
+            <RowDefinition Height="Auto" />
+            <!-- Footer -->
+        </Grid.RowDefinitions>
+
+        <!-- HEADER: Image with Back Button -->
+        <Border Grid.Row="0" StrokeThickness="1" Stroke="Transparent" BackgroundColor="White"
+                Padding="0" Margin="0,30,0,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <Grid>
+                <Image Source="{Binding Image}" Aspect="AspectFill" HeightRequest="220" />
+
+                <!-- Back Button -->
+                <Border BackgroundColor="Transparent" Padding="5" 
+                        HeightRequest="40" WidthRequest="40"
+                        HorizontalOptions="Start" VerticalOptions="Start" Margin="10" StrokeThickness="0">
+                    <Image Source="backicon.png" HeightRequest="20" WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="10" Spacing="15">
+
+                <!-- Beneficiary Name -->
+                <Label Text="{Binding FullName}" FontSize="22" FontAttributes="Bold"
+                       TextColor="#183D3D" />
+
+                <!-- Organized By & Days Left -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Organized by " FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding Association_Name}" FontSize="14" TextColor="#FF9A00" FontAttributes="Bold"/>
+                    <Image Source="clockicon.png" HeightRequest="15" WidthRequest="15"/>
+                    <Label Text="{Binding TimeLeft}" FontSize="14" TextColor="#32C5FF" TranslationX="50"/>
+                </HorizontalStackLayout>
+
+                <!-- Progress Bar -->
+                <HorizontalStackLayout VerticalOptions="Center">
+                    <Label Text="{Binding FormattedRaisedAmount}" FontSize="16" FontAttributes="Bold"
+                           TextColor="#00A9A5"/>
+                    <Label Text=" of " FontSize="14" TextColor="Gray"/>
+                    <Label Text="{Binding FormattedGoalAmount}" FontSize="14" TextColor="Gray"/>
+                    <Label Text=" funded" FontSize="14" TextColor="Gray"/>
+                </HorizontalStackLayout>
+
+                <ProgressBar Progress="{Binding Progress}" HeightRequest="10"
+                             BackgroundColor="LightGray" ProgressColor="#00A9A5"/>
+
+                <!-- Description -->
+                <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="#183D3D"/>
+                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" LineBreakMode="WordWrap"/>
+
+                <!-- Participants -->
+                <Label Text="Participants" FontSize="18" FontAttributes="Bold" TextColor="#183D3D"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Border HeightRequest="35" WidthRequest="35" BackgroundColor="#FF9A00">
+                        <Label Text="LA" FontSize="14" HorizontalOptions="Center"
+                               VerticalOptions="Center" TextColor="White"/>
+                    </Border>
+                    <Border HeightRequest="35" WidthRequest="35" BackgroundColor="#00A9A5">
+                        <Label Text="RB" FontSize="14" HorizontalOptions="Center"
+                               VerticalOptions="Center" TextColor="White"/>
+                    </Border>
+                    <Border HeightRequest="35" WidthRequest="35" BackgroundColor="#32C5FF">
+                        <Label Text="JZ" FontSize="14" HorizontalOptions="Center"
+                               VerticalOptions="Center" TextColor="White"/>
+                    </Border>
+                </HorizontalStackLayout>
+
+                <!-- Share Button Section -->
+                <VerticalStackLayout Spacing="10" Padding="10">
+                    <Label Text="Share this case" FontSize="18" FontAttributes="Bold" TextColor="#183D3D"/>
+                    <Button Text="Share via Email or Social Media"
+                            BackgroundColor="#FF9A00"
+                            TextColor="White"
+                            FontSize="16"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            Clicked="OnShareButtonClicked"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- FOOTER: Donate Button -->
+        <Grid Grid.Row="2" BackgroundColor="Transparent" Padding="15">
+            <Button Text="Donate now" BackgroundColor="#00A9A5" TextColor="White"
+                    FontSize="18" CornerRadius="25" HeightRequest="50"
+                    Clicked="OnDonateButtonClicked"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

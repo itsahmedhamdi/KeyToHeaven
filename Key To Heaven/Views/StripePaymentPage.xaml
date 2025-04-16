@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.StripePaymentPage"
+             BackgroundColor="#F5F5F5">
+    <StackLayout Padding="20">
+        <Label Text="Enter Card Details" FontSize="24" FontAttributes="Bold" TextColor="#183D3D"/>
+
+        <!-- Card Details Form -->
+        <Entry x:Name="CardNumberEntry" Placeholder="Card Number" Keyboard="Numeric" FontSize="18" BackgroundColor="White"/>
+        <Entry x:Name="ExpiryEntry" Placeholder="Expiry Date (MM/YY)" Keyboard="Numeric" FontSize="18" BackgroundColor="White"/>
+        <Entry x:Name="CVCEntry" Placeholder="CVC" Keyboard="Numeric" FontSize="18" BackgroundColor="White"/>
+
+        <Button Text="Pay Now" BackgroundColor="#FF5F00" TextColor="White" Clicked="OnPayNowClicked"/>
+    </StackLayout>
+</ContentPage>

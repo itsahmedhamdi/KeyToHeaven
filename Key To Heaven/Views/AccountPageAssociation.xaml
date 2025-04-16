@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.AccountPageAssociation">
+
+    <!-- White Background for entire page -->
+    <ContentPage.Background>
+        <SolidColorBrush Color="White" />
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- Rounded Header Section with Gradient Background -->
+            <Border BackgroundColor="#009DAE"
+                    Stroke="LightGray"
+                    StrokeThickness="1"
+                    
+                    Padding="0,40,40,40"
+                    Margin="0,0,0,20" HeightRequest="400"  >
+
+       
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton Source="backicon.png"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 BackgroundColor="Transparent"
+                                 Clicked="OnBackClicked"
+                                 HorizontalOptions="Start"
+                                 Margin="20,0,0,0" TranslationY="-30" Scale="0.6"/>
+
+                    <Label Text="Profile"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" 
+                           Grid.Column="1" TranslationX="-10" TranslationY="-20"/>
+                </Grid>
+            </Border>
+
+            <!-- White Content Area -->
+            <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White" TranslationY="-320">
+
+                <!-- Profile Image -->
+                <Border StrokeShape="RoundRectangle"
+                        BackgroundColor="White"
+                        HeightRequest="130"
+                        WidthRequest="130"
+                        HorizontalOptions="Center" 
+                        StrokeThickness="2" 
+                        Stroke="LightGray" TranslationY="-40">
+                    <Image x:Name="AssociationImage"
+                           Aspect="AspectFill"
+                           HeightRequest="120"
+                           WidthRequest="120"/>
+                </Border>
+
+                <!-- Form Fields -->
+                <VerticalStackLayout Spacing="15">
+                    <Border StrokeThickness="1" 
+                            Stroke="LightGray" 
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                        <HorizontalStackLayout>
+                            <Image Source="profileicon.png" WidthRequest="24" HeightRequest="24" Margin="10,0" />
+                            <Entry x:Name="FirstNameEntry"
+                                   Placeholder="First Name"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border StrokeThickness="1" 
+                            Stroke="LightGray" 
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                        <HorizontalStackLayout>
+                            <Image Source="password.png" WidthRequest="24" HeightRequest="24" Margin="10,0" />
+                            <Entry x:Name="Password"
+                                   Placeholder="Password"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border StrokeThickness="1" 
+                            Stroke="LightGray" 
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                        <HorizontalStackLayout>
+                            <Image Source="emailicon.png" WidthRequest="24" HeightRequest="24" Margin="10,0" />
+                            <Entry x:Name="EmailEntry"
+                                   Placeholder="Email"
+                                   FontSize="16"
+                                   Keyboard="Email"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border StrokeThickness="1" 
+                            Stroke="LightGray" 
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                        <HorizontalStackLayout>
+                            <Image Source="phoneicon.png" WidthRequest="24" HeightRequest="24" Margin="10,0" />
+                            <Entry x:Name="PhoneEntry"
+                                   Placeholder="Phone"
+                                   FontSize="16"
+                                   Keyboard="Telephone"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border StrokeThickness="1" 
+                            Stroke="LightGray" 
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                        <HorizontalStackLayout>
+                            <Image Source="descriptionicon.png" WidthRequest="24" HeightRequest="24" Margin="10,0" TranslationY="-35"/>
+                            <Editor x:Name="DescriptionEditor"
+                                    Placeholder="Description"
+                                    FontSize="16"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="100"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Save Button -->
+                <Button Text="Save"
+                        BackgroundColor="#009DAE"
+                        TextColor="White"
+                        FontSize="18"
+                        Clicked="OnSaveClicked"
+                        Padding="12"
+                        Margin="0,20,0,0"
+                        CornerRadius="10"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

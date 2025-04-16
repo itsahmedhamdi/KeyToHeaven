@@ -1,0 +1,82 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeavean.Views.SettingsPageUser"
+             BackgroundColor="white">
+
+    <Grid RowDefinitions="*, Auto">
+        <!-- This ensures the scrollable content and fixed button -->
+
+        <!-- Scrollable Content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20">
+                <!-- Forme Blanche Principale -->
+                <Border BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 15" Padding="20" TranslationY="20">
+                    <VerticalStackLayout>
+
+                        <!-- Title & Back Button -->
+                        <HorizontalStackLayout VerticalOptions="Start" Spacing="10">
+                            <ImageButton Source="backicon.png" HeightRequest="20" WidthRequest="20" Scale="0.6">
+                                <ImageButton.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                                </ImageButton.GestureRecognizers>
+                            </ImageButton>
+                            <Label Text="Settings" FontSize="24" VerticalOptions="Start" TranslationY="3"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Section General -->
+                        <Label Text="General" FontSize="18" FontAttributes="Bold" Margin="0,20,0,10" HorizontalOptions="Start" />
+                        <Border BackgroundColor="#E0E0E0" StrokeThickness="0" StrokeShape="RoundRectangle 15" Padding="25">
+                            <VerticalStackLayout Spacing="15">
+                                <HorizontalStackLayout TranslationX="-10">
+                                    <ImageButton Source="notification.png" HeightRequest="30" WidthRequest="30" Scale="0.5" VerticalOptions="Center" Opacity="0.5"/>
+                                    <Label Text="Notifications" FontSize="16" VerticalOptions="Center"/>
+                                    <Switch TranslationX="80" HorizontalOptions="End" VerticalOptions="Center" OnColor="#AEAEAE" ThumbColor="Gray"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout TranslationX="-10">
+                                    <ImageButton Source="help.png" HeightRequest="30" WidthRequest="30" Scale="0.5" VerticalOptions="Center" Opacity="0.5">
+                                    <ImageButton.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnHelpButtonTapped"/>
+                                    </ImageButton.GestureRecognizers></ImageButton>
+                                    <Label Text="Help" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout TranslationX="-10">
+                                    <ImageButton Source="log_out.png" HeightRequest="30" WidthRequest="30" Scale="0.5" VerticalOptions="Center" Opacity="0.5">
+                                        <ImageButton.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnLogOutButtonTapped"/>
+                                        </ImageButton.GestureRecognizers>
+                                    </ImageButton>
+                                    <Label Text="Log Out" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Section Feedback -->
+                        <Label Text="Feedback" FontSize="18" FontAttributes="Bold" Margin="0,20,0,10" />
+                        <Border BackgroundColor="#E0E0E0" StrokeThickness="0" StrokeShape="RoundRectangle 15" Padding="25">
+                            <VerticalStackLayout Spacing="15">
+                                <HorizontalStackLayout TranslationX="-10">
+                                    <ImageButton Source="bug.png" HeightRequest="30" WidthRequest="30" Scale="0.5" VerticalOptions="Center" Opacity="0.5">
+                                        <ImageButton.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnReportButtonTapped"/>
+                                        </ImageButton.GestureRecognizers>
+                                    </ImageButton>
+                                    <Label Text="Report" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout TranslationX="-10">
+                                    <ImageButton Source="send.png" HeightRequest="30" WidthRequest="30" Scale="0.5" VerticalOptions="Center" Opacity="0.5">
+                                        <ImageButton.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnFeedbackButtonTapped"/>
+                                        </ImageButton.GestureRecognizers>
+                                    </ImageButton>
+                                    <Label Text="Send Feedback" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

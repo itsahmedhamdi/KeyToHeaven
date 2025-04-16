@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="KeyToHeaven.Views.HomePageAssociation" BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border StrokeThickness="1" Stroke="#009DAE" BackgroundColor="#009DAE"
+        Padding="15" Margin="10,40,10,10" HeightRequest="80"
+        Grid.Row="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+
+                <!-- User Profile Icon -->
+                <Image Source="profilicon.png" HeightRequest="40" WidthRequest="40"
+               BackgroundColor="Transparent" Clip="M40,0 A40,40 0 1,1 0,40 A40,40 0 1,1 40,0 Z"
+               VerticalOptions="Center"/>
+
+                <!-- Welcome Text -->
+                <Label Text="Welcome Back!" FontSize="18" FontAttributes="Bold"
+               TextColor="#FFFFFF" VerticalOptions="Center" TranslationX="70"/>
+
+                <!-- Spacer (Pushes Search and Icons to the Right) -->
+                <Grid HorizontalOptions="Fill"/>
+
+               
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <ScrollView>
+
+
+                <VerticalStackLayout Padding="20" Spacing="20">
+
+
+               
+                    <!-- Earnings History Section -->
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout><Label Text="Earnings History" FontSize="20" FontAttributes="Bold"/>
+                            
+                            <Image Source="moneyicon.png"  WidthRequest="20" HeightRequest="20" TranslationX="10" TranslationY="2"/>
+
+
+                            
+                        
+                        </HorizontalStackLayout>
+                        
+                        
+
+                        <!-- Chart Section -->
+                        <microcharts:ChartView x:Name="DonationChart" HeightRequest="200"/>
+
+                    </VerticalStackLayout>
+                    <!-- Sponsor Section  -->
+                    <Border StrokeThickness="2" Stroke="#F6AE2D" BackgroundColor="#F6AE2D" Padding="15">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Ready To Sponsor Another Donation?" 
+                                  TextColor="White" 
+                                  FontSize="16" 
+                                  FontAttributes="Bold"
+                                  VerticalOptions="Center"/>
+                            <Button x:Name="AddCaseButton"
+        Text="Add One" 
+        BackgroundColor="White" 
+        TextColor="#F6AE2D" 
+        CornerRadius="10" 
+        Grid.Column="1"
+        WidthRequest="100"
+        Clicked="OnAddCaseClicked"/>
+
+                        </Grid>
+                    </Border>
+
+
+                    <!-- Your Cases Section -->
+                    <VerticalStackLayout>
+                        <Label Text="Your Cases" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                        <ListView  x:Name="BeneficiaryListView"
+          HasUnevenRows="True"
+          ItemTapped="OnCaseTapped"
+          SeparatorVisibility="None"
+          BackgroundColor="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Border BackgroundColor="White" StrokeThickness="1" Stroke="#E0E0E0" Margin="0,5">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="15"/>
+                                            </Border.StrokeShape>
+                                            <Grid>
+                                                <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                                                <VerticalStackLayout Padding="10" BackgroundColor="#80000000" 
+                                                     VerticalOptions="End" HorizontalOptions="Fill">
+                                                    <HorizontalStackLayout Spacing="5">
+                                                        <Label Text="{Binding Beneficiary_First_Name}" FontSize="14" FontAttributes="Bold" TextColor="White"/>
+                                                        <Label Text="{Binding Beneficiary_Last_Name}" FontSize="14" FontAttributes="Bold" TextColor="White"/>
+                                                    </HorizontalStackLayout>
+                                                    <Label Text="{Binding Beneficiary_Status}" FontSize="12" TextColor="LightGray"/>
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Bottom Navigation (Original) -->
+        <Grid BackgroundColor="Transparent" Padding="10" HeightRequest="50"
+              VerticalOptions="End" HorizontalOptions="Fill"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Source="homeicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="0" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="settingsicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="1" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingsTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="profileicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="2" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentPage>

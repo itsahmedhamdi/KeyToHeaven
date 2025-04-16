@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.HomePageUser"
+             BackgroundColor="#E3F5F5">
+
+    <Grid>
+
+        <!-- Define Rows for Header and Main Content -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Header (Navigation Bar) -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
+        <!-- Modern Navigation Header -->
+        <Border StrokeThickness="1" Stroke="#009DAE" BackgroundColor="#009DAE"
+                Padding="15" Margin="10,40,10,10" HeightRequest="80"
+                Grid.Row="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+
+                <!-- User Profile Icon -->
+                <Image Source="profilicon.png" HeightRequest="40" WidthRequest="40"
+                       BackgroundColor="Transparent" Clip="M40,0 A40,40 0 1,1 0,40 A40,40 0 1,1 40,0 Z"
+                       VerticalOptions="Center"/>
+
+                <!-- Welcome Text -->
+                <Label Text="Welcome Back!" FontSize="18" FontAttributes="Bold"
+                       TextColor="#183D3D" VerticalOptions="Center"/>
+
+                <!-- Spacer -->
+                <Grid HorizontalOptions="Fill"/>
+
+                <!-- Search Bar -->
+                <Border BackgroundColor="#F0F0F0" 
+                       Padding="5,0" WidthRequest="120" HeightRequest="35"
+                       VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                    <HorizontalStackLayout Spacing="5" >
+                        <Image Source="searchicon.png" HeightRequest="20" WidthRequest="20"/>
+                        <Entry Placeholder="Search..." FontSize="14"
+                               BackgroundColor="Transparent" TextColor="#183D3D" TranslationY="-5"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+          </Border>
+                <!-- Main Scrollable Content -->
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Spacing="20" Padding="20">
+
+                        <!-- Category Icons Section -->
+                        <ScrollView Orientation="Horizontal">
+                            <HorizontalStackLayout Spacing="30" TranslationX="10" HeightRequest="100">
+                                <VerticalStackLayout x:Name="FoodIcon" HorizontalOptions="Center" TranslationY="5">
+                                    <Image Source="foodicon.png" HeightRequest="55" WidthRequest="55"/>
+                                    <Label Text="Food" FontSize="14" HorizontalOptions="Center" TextColor="#00A9A5"/>
+                                </VerticalStackLayout>
+                        <VerticalStackLayout x:Name="HealthcareIcon" HorizontalOptions="Center" TranslationY="5">
+                                    <Image Source="healthcareicon.png" HeightRequest="55" WidthRequest="55"/>
+                                    <Label Text="Healthcare" FontSize="14" HorizontalOptions="Center" TextColor="#00A9A5"/>
+                                </VerticalStackLayout>
+                        <VerticalStackLayout x:Name="EducationIcon" HorizontalOptions="Center" TranslationY="5">
+                                    <Image Source="educationicon.png" HeightRequest="55" WidthRequest="55"/>
+                                    <Label Text="Education" FontSize="14" HorizontalOptions="Center" TextColor="#00A9A5"/>
+                                </VerticalStackLayout>
+                        <VerticalStackLayout x:Name="BuildingIcon" HorizontalOptions="Center" TranslationY="5">
+                                    <Image Source="buildingicon.png" HeightRequest="55" WidthRequest="55"/>
+                                    <Label Text="Building" FontSize="14" HorizontalOptions="Center" TextColor="#00A9A5"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+
+                        <!-- Beneficiaries Section -->
+                        <Label Text="Beneficiaries" FontSize="24" FontAttributes="Bold"
+                       HorizontalOptions="Center" TextColor="#183D3D"/>
+
+                        <CollectionView ItemsSource="{Binding Beneficiaries}" HeightRequest="300"
+                                ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                            <Border StrokeThickness="1" Stroke="#E0E0E0" BackgroundColor="White"
+        Padding="0" Margin="10,0,10,0" WidthRequest="320" HeightRequest="280">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+
+                                <Grid>
+                                    <Image Source="{Binding Image}" Aspect="AspectFill" HeightRequest="280" WidthRequest="320"/>
+                                    <VerticalStackLayout Padding="15" Spacing="10" BackgroundColor="#80000000"
+                             VerticalOptions="End" HorizontalOptions="Fill">
+                                        <Label Text="{Binding Beneficiary_First_Name}" TextColor="White"
+                   FontSize="16" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Needs}" FontSize="14" TextColor="LightGray"
+                   LineBreakMode="WordWrap"/>
+                                    </VerticalStackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnBeneficiaryTapped" CommandParameter="{Binding}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Associations Section  -->
+                        <Label Text="Associations" FontSize="24" FontAttributes="Bold"
+                       HorizontalOptions="Center" TextColor="#183D3D"/>
+                <CollectionView ItemsSource="{Binding Associations}" HeightRequest="150"
+                ItemsLayout="HorizontalList">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                           
+                                <Grid>
+                                    <Border StrokeThickness="0" BackgroundColor="White"
+                Padding="10" Margin="5,0,5,0" WidthRequest="170">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="30"/>
+                                        </Border.StrokeShape>
+                                        <VerticalStackLayout Spacing="10">
+                                            <Grid HeightRequest="100" WidthRequest="320">
+                                                <Image Source="{Binding Image}" Aspect="AspectFill"
+                           HeightRequest="100" WidthRequest="100"
+                           Clip="M100,0 A100,100 0 1,1 0,100 A100,100 0 1,1 100,0 Z"/>
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                   
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnAssociationTapped" CommandParameter="{Binding}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                           
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </VerticalStackLayout>
+                </ScrollView>
+        <Grid BackgroundColor="White" Padding="10" HeightRequest="50"
+              VerticalOptions="End" HorizontalOptions="Fill"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Home Icon -->
+            <Image Source="homeicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="0" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Settings Icon -->
+            <Image Source="settingsicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="1" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingsTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Profile Icon -->
+            <Image Source="accuilleicon.png" HeightRequest="30" WidthRequest="30"
+                   Grid.Column="2" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+
+</ContentPage>

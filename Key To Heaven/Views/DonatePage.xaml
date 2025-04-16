@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyToHeaven.Views.DonatePage"
+             BackgroundColor="#E3F5F5">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Donate Now" FontSize="24" FontAttributes="Bold" TextColor="#183D3D"/>
+
+        <Entry x:Name="AmountEntry" Placeholder="Enter Amount" Keyboard="Numeric"
+               FontSize="18" BackgroundColor="White" TextColor="Black"/>
+
+        <Label Text="Choose Payment Method" FontSize="18" FontAttributes="Bold" TextColor="#183D3D"/>
+
+        <Button Text="Pay with PayPal" BackgroundColor="#0070BA" TextColor="White"
+        Clicked="OnPayPalPaymentClicked"/>
+
+        <Button Text="Pay with Stripe (MasterCard, Visa, etc.)" BackgroundColor="#FF5F00" TextColor="White"
+                Clicked="OnStripePaymentClicked"/>
+
+        <Button Text="Cancel" BackgroundColor="Gray" TextColor="White"
+                Clicked="OnCancelClicked"/>
+    </VerticalStackLayout>
+
+</ContentPage>
